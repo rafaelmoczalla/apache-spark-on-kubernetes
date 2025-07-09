@@ -48,6 +48,8 @@ Delete the spark-master & spark-worker.
 ```bash
 kubectl scale deployment spark-worker --replicas=0
 kubectl scale deployment spark-master --replicas=0
+kubectl delete deployment spark-worker
+kubectl delete deployment master-worker
 ```
 
 Get the service name.
