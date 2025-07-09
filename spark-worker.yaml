@@ -16,10 +16,14 @@ spec:
     spec:
       containers:
         - name: spark-worker
-          image: bitnami/spark:latest
+          image: spark-py:local
           env:
             - name: SPARK_MODE
               value: worker
             - name: SPARK_MASTER_URL
               value: spark://spark-master:7077
+            - name: SPARK_WORKER_MEMORY
+              value: 2G
+            - name: SPARK_WORKER_CORES
+              value: "2"
 
