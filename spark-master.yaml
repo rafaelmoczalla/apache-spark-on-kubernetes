@@ -23,4 +23,11 @@ spec:
           ports:
             - containerPort: 7077
             - containerPort: 8080
+          volumeMounts:
+            - name: work-dir
+              mountPath: /opt/spark/work-dir
+      volumes:
+        - name: work-dir
+          emptyDir:
+            sizeLimit: 500Mi
 
