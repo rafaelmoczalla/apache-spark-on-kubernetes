@@ -1,4 +1,4 @@
-FROM bitnami/spark
+FROM apache/spark
 
 USER root
 
@@ -6,5 +6,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteract
     pip3 install pyspark && \
     rm -rf /var/lib/apt/lists/*
 
-USER 1001
+COPY start-spark.sh /usr/local/bin/start-spark.sh
+
+ENTRYPOINT ["/usr/local/bin/start-spark.sh"]
 
