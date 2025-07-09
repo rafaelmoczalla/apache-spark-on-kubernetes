@@ -10,6 +10,10 @@ Check if Kubernetes is running properly.
 ```bash
 kubectl get nodes
 ```
+Build Docker image with Apache Spark, Python & PySpark.
+```bash
+docker build -t spark-py:local worker-container
+```
 
 ### Deploy & Start the Apache Spark
 Deploy the Spark workers.
@@ -37,6 +41,16 @@ Forward the Apache Webserver to your local host & check if you can load the webs
 ```bash
 kubectl port-forward svc/spark-master 8080:8080
 curl http://localhost:8080
+```
+
+### Word Count Example
+Copy word count example to master.
+```bash
+kubectl cp ./spark-k8s-job/wordcount.py $(kubectl get pods --no-headers=true -l app=spark,role=master | awk '{print $1}'):/opt/spark/work-dir/
+```
+Start the Spark job.
+```bash
+MSYS_NO_PATHCONV=1 kubectl exec -it $(kubectl get pods --no-headers=true -l app=spark,role=master | awk '{print $1}') -- /opt/bitnami/spark/bin/spark-submit --master spark://spark-master:7077 --conf spark.jars.ivy=/tmp/.ivy2 /opt/spark/work-dir/wordcount.py
 ```
 
 ### Delete Apache Spark
