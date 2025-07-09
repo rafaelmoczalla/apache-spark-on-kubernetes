@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: spark-master
-          image: bitnami/spark:latest
+          image: spark-py:local
           env:
             - name: SPARK_MODE
               value: master
