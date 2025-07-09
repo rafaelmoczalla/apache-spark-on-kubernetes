@@ -12,13 +12,13 @@ kubectl get nodes
 ```
 
 ### Deploy & Start the Apache Spark
-Deploy the Spark master.
-```bash
-kubectl apply -f spark-master.yaml
-```
 Deploy the Spark workers.
 ```bash
 kubectl apply -f spark-worker.yaml
+```
+Deploy the Spark master.
+```bash
+kubectl apply -f spark-master.yaml
 ```
 Start the Kubernetes service.
 ```bash
