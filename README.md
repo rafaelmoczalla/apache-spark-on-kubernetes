@@ -56,7 +56,7 @@ kubectl get services --all-namespaces
 ```
 Delete the spark-master-service.
 ```bash
-kubectl delete service spark-master-service
+kubectl delete service spark-master
 ```
 
 ## License
